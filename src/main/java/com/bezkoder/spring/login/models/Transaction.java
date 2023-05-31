@@ -28,6 +28,7 @@ public class Transaction {
     private Date date_ajout ;
 
     private  Integer sommeTransaction;
+
     @Enumerated(EnumType.STRING)
     private MethodePaiement methodePaiement;
     @Enumerated(EnumType.STRING)

@@ -33,6 +33,8 @@ public class ProduitServiceImpl implements ProduitService{
                     p.setCategorie(produit.getCategorie());
                     p.setDescription(produit.getDescription());
                     p.setCode_produit(produit.getCode_produit());
+                    p.setCommentaire(produit.getCommentaire());
+                    p.setDate_creation(produit.getDate_creation());
                     return produitRepository.save(p);
                 }).orElseThrow(()-> new RuntimeException("Produit non trouvé!"));
     }

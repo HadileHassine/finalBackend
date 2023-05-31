@@ -29,6 +29,7 @@ public class Client {
     private String email ;
     private String entreprise ;
     private String commentaire ;
+    private String pays ;
     @Enumerated(EnumType.STRING)
     private Salutation salutation;
     @Enumerated(EnumType.STRING)

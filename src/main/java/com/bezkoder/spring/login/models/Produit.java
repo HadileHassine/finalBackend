@@ -4,8 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 @Entity
 @Table(name = "PRODUIT")
@@ -23,6 +25,10 @@ public class Produit {
     private String description;
     private Integer prix;
     private Integer code_produit;
+    private String commentaire ;
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date date_creation;
 
     @OneToMany(mappedBy = "produit")
     private List<Transaction> transactions;

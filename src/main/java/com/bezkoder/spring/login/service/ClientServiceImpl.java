@@ -35,6 +35,7 @@ public class ClientServiceImpl implements ClientService {
                     c.setNum_telephone(client.getNum_telephone());
                     c.setCommentaire(client.getCommentaire());
                     c.setSalutation(client.getSalutation());
+                    c.setPays(client.getPays());
                     return clientRepository.save(c);
                 }).orElseThrow(()-> new RuntimeException("Client non trouvé!"));
     }

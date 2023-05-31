@@ -7,6 +7,9 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface TransactionRepository extends JpaRepository<Transaction, Long> {
+    @Query(value =" SELECT SUM(montant) FROM transaction", nativeQuery = true)
+    public int sommeTransaction();
+
     @Query(value = " SELECT * FROM transaction  WHERE type_transaction = 'vente_integre'" , nativeQuery = true)
     public List<Transaction> name();
     @Query(value = "SELECT * FROM transaction", nativeQuery = true)
@@ -20,9 +23,6 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
     @Query(value = " SELECT * FROM Transaction WHERE date_ajout >= '2023-01-01'" , nativeQuery = true)
     public List<Transaction> dateAjout();
 
-    @Query(value = "SELECT SUM(montant) FROM Transaction", nativeQuery = true)
-    public int sommeTransaction();
-
     @Query(value = "Select * from Transaction  where  date_ajout >= NOW() - INTERVAL 1 Month " , nativeQuery = true)
     public List<Transaction> transactionLastMonth();
 
@@ -31,5 +31,8 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
 
     @Query(value = "Select * from Transaction  where  date_ajout >= NOW() - INTERVAL 1 YEAR " , nativeQuery = true)
     public List<Transaction> transactionLastYear();
+
+    @Query(value="Select type_transaction , id_produit , id_client , statut_transaction from Transaction ORDER BY date_ajout DESC LIMIT 5",nativeQuery = true)
+    public List<Transaction> transactionLastFive();
 
 }

@@ -35,16 +35,10 @@ public class Transaction {
     private StatutTransaction statutTransaction;
     @Enumerated(EnumType.STRING)
     private TypeTransaction typeTransaction;
-    @ManyToOne
-    @JoinColumn(name = "id_Produit",referencedColumnName = "id_produit")
-    @JsonIgnore
-    private Produit produit ;
 
+    private String produit ;
 
-    @ManyToOne
-    @JoinColumn(name = "id_Client",referencedColumnName = "id_client")
-    @JsonIgnore
-    private Client client;
+    private String client;
 
 
     @ManyToOne
